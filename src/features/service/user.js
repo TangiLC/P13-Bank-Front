@@ -9,28 +9,28 @@ export function fetchUser(token) {
 		}
 		dispatch(actions.userFetching(token));
 
-		const Bearer_Token = {
-			method: "POST",
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		};
-
 		try {
 			const response = await fetch(
 				"http://localhost:3001/api/v1/user/profile",
-				Bearer_Token
+				{
+					method: "POST",
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
 			);
 
 			const data = await response.json();
+			console.log(data);
 			if (response.status === 400) {
 				console.log("invalid fields");
 			}
-			if (response.status === 401) {
-				dispatch(actions.reset());
+			if (response.status === 500) {
+				console.log("internal Error 500");
 			}
-
-			dispatch(actions.userResolved(token, data.body));
+			if (response.status === 200) {
+				dispatch(actions.userResolved(token, data.body));
+			}
 		} catch (error) {
 			dispatch(actions.userRejected(token, error));
 		}
@@ -40,22 +40,28 @@ export function fetchUser(token) {
 export function updateUserData(token, firstName, lastName) {
 	return async (dispatch) => {
 		let bodyToUpdate = { firstName: firstName, lastName: lastName };
-		const Bearer_Token = {
-			method: "PUT",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: `Bearer ${token}`,
-			},
-			body: JSON.stringify(bodyToUpdate),
-		};
+
 		try {
 			const response = await fetch(
 				"http://localhost:3001/api/v1/user/profile",
-				Bearer_Token
+				{
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify(bodyToUpdate),
+				}
 			);
-
-			const data = await response.json();
-			dispatch(actions.userUpdate(token, firstName, lastName));
+			if (response.status === 400) {
+				console.log("invalid fields");
+			}
+			if (response.status === 500) {
+				console.log("internal Error 500");
+			}
+			if (response.status === 200) {
+				dispatch(actions.userUpdate(token, firstName, lastName));
+			}
 		} catch (error) {
 			dispatch(actions.userRejected(token, error));
 		}
