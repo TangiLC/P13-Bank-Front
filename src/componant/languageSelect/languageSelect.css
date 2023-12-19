@@ -1,0 +1,34 @@
+ul {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+}
+
+.flex-row {
+	display: flex;
+}
+.flag {
+	width: 1.7rem;
+	height: 1.7rem;
+	background-image: url("../../assets/flags.png");
+	background-size: 3.4rem 3.4rem;
+	font-size: 1.4rem;
+	color: white;
+	text-shadow: 0 0 2px #000000, 0 0 2px #000000;
+}
+
+.flag.flag-es {
+	background-position: 0 0;
+}
+
+.flag.flag-fr {
+	background-position: -1.7rem 0;
+}
+
+.flag.flag-en {
+	background-position: 0 -1.7rem;
+}
+
+.flag.flag-ge {
+	background-position: -1.7rem -1.7rem;
+}

@@ -1,0 +1,32 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formChange{
+    width: 35%;
+}
+
+.divButtonChange, .divInputChange{
+    display: flex;
+    justify-content: center;
+}
+
+.inputChange{    
+    height: 30px;
+    width: 40%;
+    margin: 5px;
+    padding-left: 15px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.buttonChange {
+    height: 30px;
+    width: 30%;
+    margin: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+    color: #643FB1;
+}
