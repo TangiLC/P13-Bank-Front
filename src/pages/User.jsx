@@ -1,4 +1,4 @@
-import Transactions from "../componant/transactions/Transactions";
+import Transactions from "../component/transactions/Transactions";
 import { selectUser } from "../utils/selector";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -6,9 +6,27 @@ import { useNavigate } from "react-router-dom";
 import { fetchUser } from "../features/service/user";
 import { signOut } from "../features/signout";
 import "../utils/styles/user.css";
-import EditName from "../componant/editName/EditName";
+import EditName from "../component/editName/EditName";
 
 function User() {
+	const accounts = [
+		{
+			title: "Argent Bank Checking (x8349)",
+			amount: "$2,082.79",
+			description: "Available Balance",
+		},
+		{
+			title: "Argent Bank Savings (x6712)",
+			amount: "$10,928.42",
+			description: "Available Balance",
+		},
+		{
+			title: "Argent Bank Credit Card (x8349)",
+			amount: "$184.30",
+			description: "Current Balance",
+		},
+	];
+
 	const user = useSelector(selectUser);
 	const token =
 		sessionStorage.getItem("token-info") || localStorage.getItem("token-info");
@@ -36,21 +54,14 @@ function User() {
 		<main className="main bg-dark">
 			<EditName />
 			<h2 className="sr-only">Accounts</h2>
-			<Transactions
-				account_title="Argent Bank Checking (x8349)"
-				account_amount="$2,082.79"
-				account_amount_description="Available Balance"
-			/>
-			<Transactions
-				account_title="Argent Bank Savings (x6712)"
-				account_amount="$10,928.42"
-				account_amount_description="Available Balance"
-			/>
-			<Transactions
-				account_title="Argent Bank Credit Card (x8349)"
-				account_amount="$184.30"
-				account_amount_description="Current Balance"
-			/>
+			{accounts.map((account, index) => (
+				<Transactions
+					key={index}
+					account_title={account.title}
+					account_amount={account.amount}
+					account_amount_description={account.description}
+				/>
+			))}
 		</main>
 	) : (
 		<div>Error</div>

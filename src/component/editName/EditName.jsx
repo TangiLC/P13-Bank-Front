@@ -22,6 +22,12 @@ function EditName() {
 			cancel: "Annuler",
 			greeting: "Merci de mettre à jour vos informations",
 		},
+		es: {
+			edit: "Editar Nombre",
+			save: "Guardar",
+			cancel: "Cancelar",
+			greeting: "Por favor, edite sus datos",
+		},
 	};
 
 	const dispatch = useDispatch();

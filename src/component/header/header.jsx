@@ -47,17 +47,18 @@ function Header() {
 				/>
 				<h1 className="sr-only">Argent Bank</h1>
 			</Link>
-			<div>
+			<div className="flex-row">
 				<Link to={"/User"} className="main-nav-item">
 					<FaUserCircle size={"1.5rem"} color="#42b983" />
 					{user.data.data.firstName}
 				</Link>
+
 				<Link to={"/"} onClick={logout} className="main-nav-item">
 					<FaSignOutAlt size={"1.5rem"} color="#42b983" />
 					{signInOut[language].out}
 				</Link>
+				<LanguageSelect />
 			</div>
-			<LanguageSelect />
 		</nav>
 	) : (
 		<nav className="main-nav">
@@ -69,11 +70,13 @@ function Header() {
 				/>
 				<h1 className="sr-only">Argent Bank</h1>
 			</Link>
-			<Link to={"/login"} className="main-nav-item">
-				<FaSignInAlt size={"1.5rem"} color="#42b983" />
-				{signInOut[language].in}
-			</Link>
-			<LanguageSelect />
+			<div className="flex-row">
+				<Link to={"/login"} className="main-nav-item">
+					<FaSignInAlt size={"1.5rem"} color="#42b983" />
+					{signInOut[language].in}
+				</Link>
+				<LanguageSelect />
+			</div>
 		</nav>
 	);
 }

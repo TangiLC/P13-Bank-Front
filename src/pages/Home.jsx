@@ -1,5 +1,5 @@
-import Homebanner from "../componant/home/Homebanner";
-import Homecontent from "../componant/home/Homecontent";
+import Homebanner from "../component/home/Homebanner";
+import Homecontent from "../component/home/Homecontent";
 import "../utils/styles/home.css";
 
 function Home() {
