@@ -2,7 +2,7 @@ import ArgentBankLogo from "../../assets/argentBankLogo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { selectUser, selectLanguage } from "../../utils/selector";
 import { useDispatch, useSelector } from "react-redux";
-import { signOut } from "../../features/signout";
+import { signOut } from "../../features/service/signout";
 import { fetchUser } from "../../features/service/user";
 import "../../utils/styles/header.css";
 import { useEffect } from "react";

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../features/service/user";
 import { fetchToken } from "../../features/service/token";
 import { useNavigate } from "react-router-dom";
-import { setRemember } from "../../features/remember";
+import { setRemember } from "../../features/service/remember";
 import { selectLanguage } from "../../utils/selector";
 
 function SignInForm() {
@@ -48,6 +48,7 @@ function SignInForm() {
 			setInvalid(true);
 			navigate("/");
 		}
+
 		setInvalid(false);
 		dispatch(fetchUser(token));
 

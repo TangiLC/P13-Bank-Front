@@ -1,4 +1,4 @@
-import {actions} from './Slice/user'
+import {actions} from '../Slice/user'
 
 
 export function signOut(){

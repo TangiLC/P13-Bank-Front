@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLanguage } from "../../utils/selector";
 import { setLanguage } from "../../features/Slice/language";
-import "./languageSelect.css";
+import "../../utils/styles/languageSelect.css";
 
 const LanguageSelect = () => {
 	const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchUser } from "../features/service/user";
-import { signOut } from "../features/signout";
+import { signOut } from "../features/service/signout";
 import "../utils/styles/user.css";
 import EditName from "../component/editName/EditName";
 

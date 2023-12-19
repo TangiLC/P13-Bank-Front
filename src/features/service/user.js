@@ -2,7 +2,6 @@ import { actions } from "../Slice/user";
 import { selectUser } from "../../utils/selector";
 
 export function fetchUser(token) {
-	//Fetch infos profile from user
 	return async (dispatch, getState) => {
 		const status = selectUser(getState()).statusData;
 		if (status === "pending" || status === "updating") {
