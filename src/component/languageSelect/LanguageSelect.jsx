@@ -19,6 +19,7 @@ const LanguageSelect = () => {
 	};
 	useEffect(() => {
 		detectBrowserLanguage();
+		// eslint-disable-next-line
 	}, []);
 
 	const languages = [
