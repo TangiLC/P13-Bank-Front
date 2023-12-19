@@ -21,7 +21,6 @@ export function fetchUser(token) {
 			);
 
 			const data = await response.json();
-			console.log(data);
 			if (response.status === 400) {
 				console.log("invalid fields");
 			}

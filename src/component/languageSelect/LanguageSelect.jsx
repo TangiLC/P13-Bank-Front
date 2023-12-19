@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLanguage } from "../../utils/selector";
 import { setLanguage } from "../../features/Slice/language";
@@ -8,6 +8,18 @@ const LanguageSelect = () => {
 	const dispatch = useDispatch();
 	const language = useSelector(selectLanguage);
 	const [isOpen, setIsOpen] = useState(false);
+
+	const detectBrowserLanguage = () => {
+		const userLanguage = navigator.language || navigator.userLanguage;
+		if (["fr", "en", "es"].includes(userLanguage)) {
+			dispatch(setLanguage(userLanguage));
+		} else {
+			dispatch(setLanguage("en"));
+		}
+	};
+	useEffect(() => {
+		detectBrowserLanguage();
+	}, []);
 
 	const languages = [
 		{ code: "fr", label: "français" },

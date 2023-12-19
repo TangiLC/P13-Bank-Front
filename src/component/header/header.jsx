@@ -2,8 +2,8 @@ import ArgentBankLogo from "../../assets/argentBankLogo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { selectUser, selectLanguage } from "../../utils/selector";
 import { useDispatch, useSelector } from "react-redux";
-import { signOut } from "../../features/service/signout";
-import { fetchUser } from "../../features/service/user";
+import { signOut } from "../../features/services/signout";
+import { fetchUser } from "../../features/services/user";
 import "../../utils/styles/header.css";
 import { useEffect } from "react";
 import LanguageSelect from "../languageSelect/LanguageSelect";
@@ -22,7 +22,8 @@ function Header() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const token =
-		sessionStorage.getItem("token-info") || localStorage.getItem("token-info");
+		sessionStorage.getItem("AB-token-info") ||
+		localStorage.getItem("AB-token-info");
 	const Remembered = localStorage.getItem("isRemembered");
 
 	function logout() {

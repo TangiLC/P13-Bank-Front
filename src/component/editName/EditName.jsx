@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser, selectLanguage } from "../../utils/selector";
 import { useState } from "react";
 import Userinfo from "../user/Userinfo";
-import { updateUserData } from "../../features/service/user";
+import { updateUserData } from "../../features/services/user";
 import { editUser } from "./editUser";
 import "../../utils/styles/editname.css";
 
@@ -17,7 +17,7 @@ function EditName() {
 
 	function edit(e) {
 		e.preventDefault();
-		const token = user.data.token || localStorage.getItem("token-info");
+		const token = user.data.token || localStorage.getItem("AB-token-info");
 		const edit = dispatch(updateUserData(token, firstName, lastName));
 
 		if (!edit) {

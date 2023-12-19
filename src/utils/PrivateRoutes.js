@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom"
 
 const useAuth=()=>{
-    const user= (sessionStorage.getItem('token-info')|| localStorage.getItem('token-info'))
+    const user= (sessionStorage.getItem('AB-token-info')|| localStorage.getItem('AB-token-info'))
 
     return user ? true : false
 }

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "../../features/service/user";
-import { fetchToken } from "../../features/service/token";
+import { fetchUser } from "../../features/services/user";
+import { fetchToken } from "../../features/services/token";
 import { useNavigate } from "react-router-dom";
-import { setRemember } from "../../features/service/remember";
+import { setRemember } from "../../features/services/remember";
 import { selectLanguage } from "../../utils/selector";
 import { signInText } from "./signInText";
 
@@ -16,11 +16,17 @@ function SignInForm() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
+	const memory_token = localStorage.getItem("AB-token-info");
+	if (memory_token) {
+		setInvalid(false);
+		dispatch(fetchUser(memory_token));
+		navigate("/User");
+	}
+
 	async function Login(e) {
 		e.preventDefault();
 		const remember = document.getElementById("remember-me").checked;
-		const userLogin = { email, password };
-		const token = await dispatch(fetchToken(userLogin));
+		const token = await dispatch(fetchToken({ email, password }));
 
 		if (!token) {
 			setInvalid(true);
@@ -32,7 +38,7 @@ function SignInForm() {
 
 		remember
 			? setRemember(token, remember)
-			: sessionStorage.setItem("token-info", token);
+			: sessionStorage.setItem("AB-token-info", token);
 		navigate("/User");
 	}
 
