@@ -5,32 +5,10 @@ import { fetchToken } from "../../features/service/token";
 import { useNavigate } from "react-router-dom";
 import { setRemember } from "../../features/service/remember";
 import { selectLanguage } from "../../utils/selector";
+import { signInText } from "./signInText";
 
 function SignInForm() {
 	const language = useSelector(selectLanguage);
-	const formText = {
-		en: {
-			signIn: "Sign In",
-			userName: "User Name",
-			password: "Password",
-			remember: "Remember me",
-			errorMssg: "Invalid User/password couple",
-		},
-		fr: {
-			signIn: "Connexion",
-			userName: "Nom utilisateur",
-			password: "Mot de passe",
-			remember: "Se souvenir de moi",
-			errorMssg: "Couple utilisateur/mot de passe invalide",
-		},
-		es: {
-			signIn: "Iniciar sesión",
-			userName: "Nombre de usuario",
-			password: "Contraseña",
-			remember: "Recordarme",
-			errorMssg: "Usuario/contraseña no válidos",
-		},
-	};
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [invalid, setInvalid] = useState(false);
@@ -61,11 +39,11 @@ function SignInForm() {
 	return (
 		<section className="sign-in-content">
 			<i className="fa fa-user-circle sign-in-icon"></i>
-			<h1>{formText[language].signIn}</h1>
+			<h1>{signInText[language].signIn}</h1>
 			<form>
 				<div>
 					<div className="input-wrapper">
-						<label htmlFor="username">{formText[language].userName}</label>
+						<label htmlFor="username">{signInText[language].userName}</label>
 						<input
 							type="text"
 							id="username"
@@ -73,7 +51,7 @@ function SignInForm() {
 						/>
 					</div>
 					<div className="input-wrapper">
-						<label htmlFor="password">{formText[language].password}</label>
+						<label htmlFor="password">{signInText[language].password}</label>
 						<input
 							type="password"
 							id="password"
@@ -82,16 +60,16 @@ function SignInForm() {
 					</div>
 					<div className="input-remember">
 						<input type="checkbox" id="remember-me" />
-						<label htmlFor="remember-me">{formText[language].remember}</label>
+						<label htmlFor="remember-me">{signInText[language].remember}</label>
 					</div>
 					<button onClick={(e) => Login(e)} className="sign-in-button">
-						{formText[language].signIn}
+						{signInText[language].signIn}
 					</button>
 				</div>
 			</form>
 			{invalid ? (
 				<div className="messageConnexionError">
-					{formText[language].errorMssg}
+					{signInText[language].errorMssg}
 				</div>
 			) : null}
 		</section>

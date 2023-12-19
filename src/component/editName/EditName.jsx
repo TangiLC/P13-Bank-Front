@@ -3,32 +3,12 @@ import { selectUser, selectLanguage } from "../../utils/selector";
 import { useState } from "react";
 import Userinfo from "../user/Userinfo";
 import { updateUserData } from "../../features/service/user";
+import { editUser } from "./editUser";
 import "../../utils/styles/editname.css";
 
 function EditName() {
 	const user = useSelector(selectUser);
 	const language = useSelector(selectLanguage);
-
-	const editUser = {
-		en: {
-			edit: "Edit Name",
-			save: "Save",
-			cancel: "Cancel",
-			greeting: "Please edit your informations",
-		},
-		fr: {
-			edit: "Modifier Nom",
-			save: "Enregistrer",
-			cancel: "Annuler",
-			greeting: "Merci de mettre à jour vos informations",
-		},
-		es: {
-			edit: "Editar Nombre",
-			save: "Guardar",
-			cancel: "Cancelar",
-			greeting: "Por favor, edite sus datos",
-		},
-	};
 
 	const dispatch = useDispatch();
 	const [firstName, setFirstName] = useState("");
