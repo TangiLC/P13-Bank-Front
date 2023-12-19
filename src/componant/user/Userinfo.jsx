@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux"
 
 function Userinfo({ firstName, lastName }) {
 	const language = useSelector((state) => state.language);
