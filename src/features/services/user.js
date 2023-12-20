@@ -1,7 +1,7 @@
 import { actions } from "../Slice/user";
 import { selectUser } from "../../utils/selector";
 
-const mockData = {
+/*const mockData = {
 	user: {
 		firstName: "Test",
 		lastName: "Mock",
@@ -10,7 +10,7 @@ const mockData = {
 	token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
 	eyJpZCI6IjY1ODJlYjA3ZjQxNGJkNGIxODkzZjNjZCIsImlhdCI6MTcwMzA3ODcwNSwiZXhwIjoxNzAzMTY1MTA1fQ.
 	ZIav3-ciNPxYbmBFLzdm5rIXXX4f8MvjudjryaZry8A`,
-};
+};*/
 
 export function fetchUser(token) {
 	return async (dispatch, getState) => {
@@ -34,18 +34,18 @@ export function fetchUser(token) {
 			const data = await response.json();
 			if (response.status === 400) {
 				console.log("invalid fields");
-				dispatch(actions.userResolved(mockData.token, mockData.user));
+				//dispatch(actions.userResolved(mockData.token, mockData.user));
 			}
 			if (response.status === 500) {
 				console.log("internal Error 500");
-				dispatch(actions.userResolved(mockData.token, mockData.user));
+				//dispatch(actions.userResolved(mockData.token, mockData.user));
 			}
 			if (response.status === 200) {
 				dispatch(actions.userResolved(token, data.body));
 			}
 		} catch (error) {
-			//dispatch(actions.userRejected(token, error));
-			dispatch(actions.userResolved(mockData.token, mockData.user));
+			dispatch(actions.userRejected(token, error));
+			//dispatch(actions.userResolved(mockData.token, mockData.user));
 		}
 	};
 }
@@ -68,20 +68,18 @@ export function updateUserData(token, firstName, lastName) {
 			);
 			if (response.status === 400) {
 				console.log("invalid fields");
-				//using mock
-				dispatch(actions.userUpdate(mockData.token, firstName, lastName));
+				//dispatch(actions.userUpdate(mockData.token, firstName, lastName));
 			}
 			if (response.status === 500) {
 				console.log("internal Error 500");
-				//using mock
-				dispatch(actions.userUpdate(mockData.token, firstName, lastName));
+				//dispatch(actions.userUpdate(mockData.token, firstName, lastName));
 			}
 			if (response.status === 200) {
 				dispatch(actions.userUpdate(token, firstName, lastName));
 			}
 		} catch (error) {
-			//dispatch(actions.userRejected(token, error));
-			dispatch(actions.userUpdate(mockData.token, firstName, lastName));
+			dispatch(actions.userRejected(token, error));
+			//dispatch(actions.userUpdate(mockData.token, firstName, lastName));
 		}
 	};
 }

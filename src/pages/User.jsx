@@ -54,11 +54,11 @@ function User() {
 			<main className="main bg-dark">
 				<br />
 				<SpinnerDiamond
-					size={100}
+					size={200}
 					color={"#00bb77"}
 					secondaryColor={"#035935"}
 					speed={150}
-					thickness={200}
+					thickness={180}
 				/>
 			</main>
 		);
