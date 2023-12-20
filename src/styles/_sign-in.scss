@@ -34,6 +34,7 @@
 }
 
 .input-wrapper {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	text-align: left;
@@ -47,4 +48,10 @@
 .input-wrapper input {
 	padding: 5px;
 	font-size: 1.2rem;
+}
+
+.password-eye {
+	position: absolute;
+	top: 50%;
+	right: 10px;
 }

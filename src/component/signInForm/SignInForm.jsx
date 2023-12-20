@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { setRemember } from "../../features/services/remember";
 import { selectLanguage } from "../../utils/selector";
 import { signInText } from "./signInText";
-import { FaUserCircle } from "react-icons/fa";
-import { key } from "../../features/services/key";
+import { FaUserCircle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { decrypt } from "../../features/services/crypto";
 
 import "../../styles/style.css";
 
@@ -27,28 +27,30 @@ function SignInForm() {
 	const [decryptedPassword, setDecryptedPassword] = useState("");
 	const cryptedEmail = localStorage.getItem("AB-email");
 	const cryptedPassword = localStorage.getItem("AB-password");
-	const CryptoJS = require("crypto-js");
 
 	useEffect(() => {
 		if (isChecked) {
-			const bytes_email = CryptoJS.AES.decrypt(cryptedEmail, key);
-			setDecryptedEmail(bytes_email.toString(CryptoJS.enc.Utf8));
+			setDecryptedEmail(decrypt(cryptedEmail));
 			setEmail(decryptedEmail);
 		}
-	}, [cryptedEmail]);
+	}, [cryptedEmail, decryptedEmail, isChecked]);
 
 	useEffect(() => {
 		if (isChecked) {
-			const bytes_password = CryptoJS.AES.decrypt(cryptedPassword, key);
-			setDecryptedPassword(bytes_password.toString(CryptoJS.enc.Utf8));
+			setDecryptedPassword(decrypt(cryptedPassword));
 			setPassword(decryptedPassword);
 		}
-	}, [cryptedPassword]);
+	}, [cryptedPassword, decryptedPassword, isChecked]);
 
 	const [email, setEmail] = useState(decryptedEmail || "");
 	const [password, setPassword] = useState(decryptedPassword || "");
+	const [isVisible, setIsVisible] = useState(false);
 
-	async function Login(e) {
+	const toggleVisible = () => {
+		setIsVisible(!isVisible);
+	};
+
+	const Login = async (e) => {
 		e.preventDefault();
 		setIsLoading(true);
 		const token = await dispatch(fetchToken({ email, password }));
@@ -71,7 +73,7 @@ function SignInForm() {
 			: sessionStorage.setItem("AB-token-info", token);
 
 		navigate("/User");
-	}
+	};
 
 	return isLoading ? (
 		<></>
@@ -93,11 +95,14 @@ function SignInForm() {
 					<div className="input-wrapper">
 						<label htmlFor="password">{signInText[language].password}</label>
 						<input
-							type="password"
+							type={isVisible ? "text" : "password"}
 							id="password"
 							value={password || ""}
 							onChange={(user) => setPassword(user.target.value)}
 						/>
+						<span className="password-eye" onClick={toggleVisible}>
+							{isVisible ? <FaEye /> : <FaEyeSlash />}
+						</span>
 					</div>
 					<div className="input-remember">
 						<input

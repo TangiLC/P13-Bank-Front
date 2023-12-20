@@ -1,10 +1,10 @@
-import { key } from './key';
+import { encrypt } from "./crypto";
+
 export function setRemember(remember) {
-    const CryptoJS = require('crypto-js');
-    const email=CryptoJS.AES.encrypt(remember.email, key).toString();
-    const password=CryptoJS.AES.encrypt(remember.password, key).toString();
-    localStorage.setItem("AB-token-info", remember.token);
+	const email = encrypt(remember.email);
+	const password = encrypt(remember.password);
+	localStorage.setItem("AB-token-info", remember.token);
 	localStorage.setItem("AB-check", remember.isChecked);
 	localStorage.setItem("AB-email", email);
-	localStorage.setItem("AB-password", password);    
+	localStorage.setItem("AB-password", password);
 }
