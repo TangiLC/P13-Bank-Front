@@ -21,10 +21,10 @@ function EditName() {
 		const token = user.data.token || localStorage.getItem("AB-token-info");
 		const edit = dispatch(updateUserData(token, firstName, lastName));
 
-		/*if (!edit) {
+		if (!edit) {
 			return;
 		}
-		dispatch(setUpdate(false));*/
+		dispatch(setUpdate(false));
 	}
 	return !update ? (
 		<div className="header">
@@ -55,11 +55,11 @@ function EditName() {
 					/>
 				</div>
 				<div className="divButtonChange">
-					<button className="buttonChange" type="submit">
+					<button className="change-button" type="submit">
 						{editUser[language].save}
 					</button>
 					<button
-						className="buttonChange"
+						className="change-button"
 						onClick={(e) => {
 							e.preventDefault(e);
 							dispatch(setUpdate(false));

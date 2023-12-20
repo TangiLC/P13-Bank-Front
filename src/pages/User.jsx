@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchUser } from "../features/services/user";
 import { signOut } from "../features/services/signout";
 import EditName from "../component/editName/EditName";
+import { SpinnerDiamond } from "spinners-react";
 
 import "../styles/style.css";
 
@@ -49,7 +50,18 @@ function User() {
 	}, [dispatch, navigate, token, user]);
 
 	if (!user.data) {
-		return null;
+		return (
+			<main className="main bg-dark">
+				<br />
+				<SpinnerDiamond
+					size={100}
+					color={"#00bb77"}
+					secondaryColor={"#035935"}
+					speed={150}
+					thickness={200}
+				/>
+			</main>
+		);
 	}
 
 	return user.data ? (

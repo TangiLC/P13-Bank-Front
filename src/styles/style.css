@@ -23,7 +23,8 @@ body {
   width: 35%;
 }
 
-.divButtonChange, .divInputChange {
+.divButtonChange,
+.divInputChange {
   display: flex;
   justify-content: center;
 }
@@ -37,13 +38,15 @@ body {
   border-radius: 5px;
 }
 
-.buttonChange {
-  height: 30px;
+.change-button {
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  height: 35px;
   width: 30%;
   margin: 5px;
-  border: 2px solid;
-  border-radius: 5px;
-  color: #643FB1;
+  border: 2px solid #00bc77;
 }
 
 .footer {
@@ -89,12 +92,13 @@ body {
 }
 
 .main-nav-item {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   text-decoration: none;
   margin-right: 0.5rem;
 }
 
 .main-nav-item:hover {
+  color: #00bc77;
   text-decoration: underline;
 }
 
@@ -235,12 +239,15 @@ ul {
   color: #fff;
 }
 
+.sign-in-button:hover {
+  text-decoration: underline;
+}
+
 .sign-in-content {
   box-sizing: border-box;
   background-color: white;
   width: 300px;
-  margin: 0 auto;
-  margin-top: 3rem;
+  margin: 3rem auto;
   padding: 2rem;
 }
 
@@ -336,6 +343,7 @@ ul {
 
 .bg-dark {
   background-color: #12002b;
+  min-height: 50dvh;
 }
 
 @media (min-width: 720px) {

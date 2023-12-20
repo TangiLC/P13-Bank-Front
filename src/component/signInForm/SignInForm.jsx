@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { setRemember } from "../../features/services/remember";
 import { selectLanguage } from "../../utils/selector";
 import { signInText } from "./signInText";
+import { FaUserCircle } from "react-icons/fa";
 
 import "../../styles/style.css";
 
@@ -14,6 +15,7 @@ function SignInForm() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [invalid, setInvalid] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -27,26 +29,30 @@ function SignInForm() {
 
 	async function Login(e) {
 		e.preventDefault();
+		setIsLoading(true);
 		const remember = document.getElementById("remember-me").checked;
-		const token = await dispatch(fetchToken({ email, password }));
+		const token = dispatch(fetchToken({ email, password }));
 
 		if (!token) {
 			setInvalid(true);
+			setIsLoading(false);
 			navigate("/");
 		}
 
 		setInvalid(false);
 		dispatch(fetchUser(token));
-
 		remember
 			? setRemember(token, remember)
 			: sessionStorage.setItem("AB-token-info", token);
+
 		navigate("/User");
 	}
 
-	return (
+	return isLoading ? (
+		<></>
+	) : (
 		<section className="sign-in-content">
-			<i className="fa fa-user-circle sign-in-icon"></i>
+			<FaUserCircle size={25} />
 			<h1>{signInText[language].signIn}</h1>
 			<form>
 				<div>

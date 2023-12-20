@@ -59,13 +59,21 @@ function Header() {
 						dispatch(setUpdate(!update));
 					}}
 				>
-					<FaUserCircle size={"1.5rem"} color="#42b983" />
-					{user.data.data.firstName}
+					<FaUserCircle
+						size={"1.5rem"}
+						color="#42b983"
+						style={{ verticalAlign: "sub" }}
+					/>
+					{user.data.data.firstName}&nbsp;
 				</Link>
 
 				<Link to={"/"} onClick={logout} className="main-nav-item">
-					<FaSignOutAlt size={"1.5rem"} color="#42b983" />
-					{signInOut[language].out}
+					<FaSignOutAlt
+						size={"1.5rem"}
+						color="#42b983"
+						style={{ verticalAlign: "sub" }}
+					/>
+					{signInOut[language].out}&nbsp;
 				</Link>
 				<LanguageSelect />
 			</div>
@@ -82,8 +90,12 @@ function Header() {
 			</Link>
 			<div className="flex-row">
 				<Link to={"/login"} className="main-nav-item">
-					<FaSignInAlt size={"1.5rem"} color="#42b983" />
-					{signInOut[language].in}
+					<FaSignInAlt
+						size={"1.5rem"}
+						color="#42b983"
+						style={{ verticalAlign: "sub" }}
+					/>
+					&nbsp;{signInOut[language].in}
 				</Link>
 				<LanguageSelect />
 			</div>
