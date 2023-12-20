@@ -1,16 +1,6 @@
 import { actions } from "../Slice/user";
 import { selectUser } from "../../utils/selector";
-
-const mockData = {
-	user: {
-		firstName: "Test",
-		lastName: "Mock",
-		email: "test@test.com",
-	},
-	token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
-	eyJpZCI6IjY1ODJlYjA3ZjQxNGJkNGIxODkzZjNjZCIsImlhdCI6MTcwMzA3ODcwNSwiZXhwIjoxNzAzMTY1MTA1fQ.
-	ZIav3-ciNPxYbmBFLzdm5rIXXX4f8MvjudjryaZry8A`,
-};
+import { mockData } from "./mockData";
 
 export function fetchUser(token) {
 	return async (dispatch, getState) => {

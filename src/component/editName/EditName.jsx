@@ -5,6 +5,7 @@ import { useState } from "react";
 import Userinfo from "../user/Userinfo";
 import { updateUserData } from "../../features/services/user";
 import { editUser } from "./editUser";
+import { FaUserEdit, FaRegWindowClose } from "react-icons/fa";
 import "../../styles/style.css";
 
 function EditName() {
@@ -56,7 +57,8 @@ function EditName() {
 				</div>
 				<div className="divButtonChange">
 					<button className="change-button" type="submit">
-						{editUser[language].save}
+						{editUser[language].save}&nbsp;&nbsp;
+						<FaUserEdit size={"1.1rem"} style={{ verticalAlign: "sub" }} />
 					</button>
 					<button
 						className="change-button"
@@ -65,6 +67,11 @@ function EditName() {
 							dispatch(setUpdate(false));
 						}}
 					>
+						<FaRegWindowClose
+							size={"1.1rem"}
+							style={{ verticalAlign: "sub" }}
+						/>
+						&nbsp;&nbsp;
 						{editUser[language].cancel}
 					</button>
 				</div>

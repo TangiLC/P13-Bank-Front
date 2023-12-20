@@ -63,6 +63,7 @@ function SignInForm() {
 
 		setInvalid(false);
 		dispatch(fetchUser(token));
+		// eslint-disable-next-line no-unused-expressions
 		isChecked
 			? setRemember({
 					email: email,
@@ -70,7 +71,13 @@ function SignInForm() {
 					isChecked: isChecked,
 					token: token,
 			  })
-			: sessionStorage.setItem("AB-token-info", token);
+			: (sessionStorage.setItem("AB-token-info", token),
+			  setRemember({
+					email: null,
+					password: null,
+					isChecked: false,
+					token: null,
+			  }));
 
 		navigate("/User");
 	};
