@@ -1,12 +1,9 @@
-import {actions} from '../Slice/user'
+import { actions } from "../Slice/user";
 
-
-export function signOut(){
-    
-    return (dispatch, getState) => {
-
-        localStorage.clear();
-        sessionStorage.clear();
-        dispatch(actions.reset())
-    } 
+export function signOut() {
+	return (dispatch) => {
+		localStorage.clear();
+		sessionStorage.clear();
+		dispatch(actions.reset());
+	};
 }

@@ -1,6 +1,7 @@
 import ArgentBankLogo from "../../assets/argentBankLogo.png";
 import { Link, useNavigate } from "react-router-dom";
-import { selectUser, selectLanguage } from "../../utils/selector";
+import { selectUser, selectLanguage, selectUpdate } from "../../utils/selector";
+import { setUpdate } from "../../features/Slice/updateUser";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../features/services/signout";
 import { fetchUser } from "../../features/services/user";
@@ -12,6 +13,7 @@ import { FaUserCircle, FaSignOutAlt, FaSignInAlt } from "react-icons/fa";
 function Header() {
 	const user = useSelector(selectUser);
 	const language = useSelector(selectLanguage);
+	const update = useSelector(selectUpdate);
 
 	const signInOut = {
 		en: { in: "Sign In", out: "Sign Out" },
@@ -49,7 +51,13 @@ function Header() {
 				<h1 className="sr-only">Argent Bank</h1>
 			</Link>
 			<div className="flex-row">
-				<Link to={"/User"} className="main-nav-item">
+				<Link
+					to={"/User"}
+					className="main-nav-item"
+					onClick={() => {
+						dispatch(setUpdate(!update));
+					}}
+				>
 					<FaUserCircle size={"1.5rem"} color="#42b983" />
 					{user.data.data.firstName}
 				</Link>

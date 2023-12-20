@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser, selectLanguage } from "../../utils/selector";
+import { selectUser, selectLanguage, selectUpdate } from "../../utils/selector";
+import { setUpdate } from "../../features/Slice/updateUser";
 import { useState } from "react";
 import Userinfo from "../user/Userinfo";
 import { updateUserData } from "../../features/services/user";
@@ -9,29 +10,29 @@ import "../../utils/styles/editname.css";
 function EditName() {
 	const user = useSelector(selectUser);
 	const language = useSelector(selectLanguage);
+	const update = useSelector(selectUpdate);
 
 	const dispatch = useDispatch();
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
-	const [isUpdating, setIsUpdating] = useState(false);
 
 	function edit(e) {
 		e.preventDefault();
 		const token = user.data.token || localStorage.getItem("AB-token-info");
 		const edit = dispatch(updateUserData(token, firstName, lastName));
 
-		if (!edit) {
+		/*if (!edit) {
 			return;
 		}
-		setIsUpdating(false);
+		dispatch(setUpdate(false));*/
 	}
-	return !isUpdating ? (
+	return !update ? (
 		<div className="header">
 			<Userinfo
 				firstName={user.data.data.firstName}
 				lastName={user.data.data.lastName}
 			/>
-			<button className="edit-button" onClick={() => setIsUpdating(true)}>
+			<button className="edit-button" onClick={() => dispatch(setUpdate(true))}>
 				{editUser[language].edit}
 			</button>
 		</div>
@@ -61,7 +62,7 @@ function EditName() {
 						className="buttonChange"
 						onClick={(e) => {
 							e.preventDefault(e);
-							setIsUpdating(false);
+							dispatch(setUpdate(false));
 						}}
 					>
 						{editUser[language].cancel}

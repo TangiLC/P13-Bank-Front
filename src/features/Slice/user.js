@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Le state initial
 const initialState = {
 	statusData: "void",
 	data: null,

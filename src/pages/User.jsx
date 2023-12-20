@@ -8,7 +8,7 @@ import { signOut } from "../features/services/signout";
 import "../utils/styles/user.css";
 import EditName from "../component/editName/EditName";
 
-function User() {
+function User(isClicked) {
 	const accounts = [
 		{
 			title: "Argent Bank Checking (x8349)",
@@ -52,7 +52,7 @@ function User() {
 
 	return user.data ? (
 		<main className="main bg-dark">
-			<EditName />
+			<EditName/>
 			<h2 className="sr-only">Accounts</h2>
 			{accounts.map((account, index) => (
 				<Transactions
