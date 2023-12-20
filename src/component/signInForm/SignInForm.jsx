@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../features/services/user";
 import { fetchToken } from "../../features/services/token";
@@ -7,31 +7,51 @@ import { setRemember } from "../../features/services/remember";
 import { selectLanguage } from "../../utils/selector";
 import { signInText } from "./signInText";
 import { FaUserCircle } from "react-icons/fa";
+import { key } from "../../features/services/key";
 
 import "../../styles/style.css";
 
 function SignInForm() {
 	const language = useSelector(selectLanguage);
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
 	const [invalid, setInvalid] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const memory_token = localStorage.getItem("AB-token-info");
-	if (memory_token) {
-		setInvalid(false);
-		dispatch(fetchUser(memory_token));
-		navigate("/User");
-	}
+	const localStorageCheck =
+		localStorage.getItem("AB-check") === "true" || false;
+	const [isChecked, setIsChecked] = useState(localStorageCheck || false);
+
+	const [decryptedEmail, setDecryptedEmail] = useState("");
+	const [decryptedPassword, setDecryptedPassword] = useState("");
+	const cryptedEmail = localStorage.getItem("AB-email");
+	const cryptedPassword = localStorage.getItem("AB-password");
+	const CryptoJS = require("crypto-js");
+
+	useEffect(() => {
+		if (isChecked) {
+			const bytes_email = CryptoJS.AES.decrypt(cryptedEmail, key);
+			setDecryptedEmail(bytes_email.toString(CryptoJS.enc.Utf8));
+			setEmail(decryptedEmail);
+		}
+	}, [cryptedEmail]);
+
+	useEffect(() => {
+		if (isChecked) {
+			const bytes_password = CryptoJS.AES.decrypt(cryptedPassword, key);
+			setDecryptedPassword(bytes_password.toString(CryptoJS.enc.Utf8));
+			setPassword(decryptedPassword);
+		}
+	}, [cryptedPassword]);
+
+	const [email, setEmail] = useState(decryptedEmail || "");
+	const [password, setPassword] = useState(decryptedPassword || "");
 
 	async function Login(e) {
 		e.preventDefault();
 		setIsLoading(true);
-		const remember = document.getElementById("remember-me").checked;
-		const token = dispatch(fetchToken({ email, password }));
+		const token = await dispatch(fetchToken({ email, password }));
 
 		if (!token) {
 			setInvalid(true);
@@ -41,8 +61,13 @@ function SignInForm() {
 
 		setInvalid(false);
 		dispatch(fetchUser(token));
-		remember
-			? setRemember(token, remember)
+		isChecked
+			? setRemember({
+					email: email,
+					password: password,
+					isChecked: isChecked,
+					token: token,
+			  })
 			: sessionStorage.setItem("AB-token-info", token);
 
 		navigate("/User");
@@ -61,6 +86,7 @@ function SignInForm() {
 						<input
 							type="text"
 							id="username"
+							value={email || ""}
 							onChange={(user) => setEmail(user.target.value)}
 						/>
 					</div>
@@ -69,11 +95,17 @@ function SignInForm() {
 						<input
 							type="password"
 							id="password"
+							value={password || ""}
 							onChange={(user) => setPassword(user.target.value)}
 						/>
 					</div>
 					<div className="input-remember">
-						<input type="checkbox" id="remember-me" />
+						<input
+							type="checkbox"
+							id="remember-me"
+							checked={isChecked}
+							onChange={() => setIsChecked(!isChecked)}
+						/>
 						<label htmlFor="remember-me">{signInText[language].remember}</label>
 					</div>
 					<button onClick={(e) => Login(e)} className="sign-in-button">
