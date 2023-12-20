@@ -1,5 +1,5 @@
 import SignInForm from "../component/signInForm/SignInForm";
-import "../utils/styles/sign-in.css";
+import "../styles/style.css";
 
 function Signin() {
     return(

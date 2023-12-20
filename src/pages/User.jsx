@@ -5,10 +5,11 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchUser } from "../features/services/user";
 import { signOut } from "../features/services/signout";
-import "../utils/styles/user.css";
 import EditName from "../component/editName/EditName";
 
-function User(isClicked) {
+import "../styles/style.css";
+
+function User() {
 	const accounts = [
 		{
 			title: "Argent Bank Checking (x8349)",
@@ -29,7 +30,8 @@ function User(isClicked) {
 
 	const user = useSelector(selectUser);
 	const token =
-		sessionStorage.getItem("AB-token-info") || localStorage.getItem("AB-token-info");
+		sessionStorage.getItem("AB-token-info") ||
+		localStorage.getItem("AB-token-info");
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	useEffect(() => {
@@ -52,7 +54,7 @@ function User(isClicked) {
 
 	return user.data ? (
 		<main className="main bg-dark">
-			<EditName/>
+			<EditName />
 			<h2 className="sr-only">Accounts</h2>
 			{accounts.map((account, index) => (
 				<Transactions

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectLanguage } from "../../utils/selector";
 import { hero } from "./hero";
-import "../../utils/styles/homebanner.css";
+import "../../styles/style.css";
 
 function Homebanner() {
 	const language = useSelector(selectLanguage);

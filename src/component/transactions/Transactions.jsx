@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 
 import { selectLanguage } from "../../utils/selector";
+import "../../styles/style.css";
 
 function Transactions({ title, amount, description }) {
 	const language = useSelector(selectLanguage);

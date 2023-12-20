@@ -5,10 +5,11 @@ import { setUpdate } from "../../features/Slice/updateUser";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../features/services/signout";
 import { fetchUser } from "../../features/services/user";
-import "../../utils/styles/header.css";
 import { useEffect } from "react";
 import LanguageSelect from "../languageSelect/LanguageSelect";
 import { FaUserCircle, FaSignOutAlt, FaSignInAlt } from "react-icons/fa";
+
+import "../../styles/style.css";
 
 function Header() {
 	const user = useSelector(selectUser);

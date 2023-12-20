@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectLanguage } from "../../utils/selector";
 import { features } from "./features";
-import "../../utils/styles/home.css";
+import "../../styles/style.css";
 
 function Home() {
 	const language = useSelector(selectLanguage);

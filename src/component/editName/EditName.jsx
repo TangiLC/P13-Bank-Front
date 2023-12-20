@@ -5,7 +5,7 @@ import { useState } from "react";
 import Userinfo from "../user/Userinfo";
 import { updateUserData } from "../../features/services/user";
 import { editUser } from "./editUser";
-import "../../utils/styles/editname.css";
+import "../../styles/style.css";
 
 function EditName() {
 	const user = useSelector(selectUser);

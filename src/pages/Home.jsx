@@ -1,6 +1,6 @@
 import Homebanner from "../component/home/Homebanner";
 import Homecontent from "../component/home/Homecontent";
-import "../utils/styles/home.css";
+import "../styles/style.css";
 
 function Home() {
 	return (

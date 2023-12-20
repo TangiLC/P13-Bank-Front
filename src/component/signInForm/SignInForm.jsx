@@ -7,6 +7,8 @@ import { setRemember } from "../../features/services/remember";
 import { selectLanguage } from "../../utils/selector";
 import { signInText } from "./signInText";
 
+import "../../styles/style.css";
+
 function SignInForm() {
 	const language = useSelector(selectLanguage);
 	const [email, setEmail] = useState("");
