@@ -41,24 +41,27 @@ Pour lancer l'App en mode développement, sur le port local 3000 par défaut :
 
 ## Fonctionnalités de la phase authentification
 
-- _L'utilisateur peut visiter la page d'accueil_
+- _L'utilisateur peut visiter la page d'accueil_&nbsp;
+
   La page root `/` est accessible
 
-- _L'utilisateur peut se connecter au système_
-  La page `/sign-in` est accessible, le formulaire de connection attend la saisie utilisateur
-  La validation de la saisie entraîne la vérification du couple email/mdp par l'API
-  Après vérification positive, envoi d'un token jws et navigation vers `/user`
-  Si l'utilisateur choisi de conserver l'authentification, le token est sauvegardé en localStorage
-  Après vérification négative, retour sur root `/`
+- _L'utilisateur peut se connecter au système_&nbsp;
 
-- _L'utilisateur peut se déconnecter du système_
-  Le header affiche un bouton de déconnexion
-  Un clic sur le bouton renvoie sur la page root `/`
-  Le token stocké en localStorage ou SessionStorage est remis à zéro
+  La page `/sign-in` est accessible, le formulaire de connection attend la saisie utilisateur&nbsp;
+  La validation de la saisie entraîne la vérification du couple email/mdp par l'API&nbsp;
+  Après vérification positive, envoi d'un token jws et navigation vers `/user`&nbsp;
+  Si l'utilisateur choisi de conserver l'authentification, le token est sauvegardé en localStorage&nbsp;
+  Après vérification négative, retour sur root `/`&nbsp;
 
-- _L'utilisateur peut modifier le profil et conserver les données dans la base de données._
-  Le endpoint /user/profile PUT avec une authentification par token permet à l'API de modifier la bdd
+- _L'utilisateur peut se déconnecter du système_&nbsp;
 
-- _Utilisation de Redux pour la gestion du store_
-  Redux et Redux-toolkit prennent en charge le store, avec actions et reducers
+  Le header affiche un bouton de déconnexion&nbsp;
+  Un clic sur le bouton renvoie sur la page root `/`&nbsp;
+  Le token stocké en localStorage ou SessionStorage est remis à zéro&nbsp;
 
+- _L'utilisateur peut modifier le profil et conserver les données dans la base de données._&nbsp;
+
+  Le endpoint /user/profile PUT avec une authentification par token permet à l'API de modifier la bdd&nbsp;
+
+- _Utilisation de Redux pour la gestion du store_&nbsp;
+  Redux et Redux-toolkit prennent en charge le store, avec actions et reducers&nbsp;
