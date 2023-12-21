@@ -1,6 +1,7 @@
 # Utilisez une API pour un compte utilisateur bancaire avec React
 
-Connection à la base de données avec un Token jws généré par l'API Back-end
+Création d'une application web React pour un système d'authentification utilisateur. Connection à la base de données avec un Token jws généré par l'API Back-end.
+
 Conversion de l'ancien design HTML en react.
 
 ## Préliminaires
@@ -10,11 +11,11 @@ Lire le ReadMe pour mettre en place la bdd (Mongo) et l'API.
 
 ## Scripts
 
-Une fois la bdd connectée et l'API Back-end lancé sur le port local 3001 (`npm run dev:server`),
+Une fois la bdd connectée et l'API Back-end lancée sur le port local 3001 (`npm run dev:server`),
 
 ### `npm start`
 
-Lance l'App en mode développement
+Lance l'App en mode développement, ouvrir :
 [http://localhost:3000](http://localhost:3000) pour voir dans le navigateur.
 
 ## Technologies
@@ -26,7 +27,12 @@ Lance l'App en mode développement
 
 ## Resources
 
-- [![Figma-SportSee-Project](https://img.shields.io/badge/Figma-SportSee-red?style&logo=figma)](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1)
+- Les fichiers html statiques et css de l'ancien design sont fournis en base.
+![Alt text](index.png)
+![Alt text](sign-in.png)
+![Alt text](user.png)
+
+
 
 ### Prérequis
 
