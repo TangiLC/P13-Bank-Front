@@ -55,7 +55,7 @@ function User() {
 				<br />
 				<SpinnerDiamond
 					size={200}
-					color={"#00bb77"}
+					color={"#00bc77"}
 					secondaryColor={"#035935"}
 					speed={150}
 					thickness={180}

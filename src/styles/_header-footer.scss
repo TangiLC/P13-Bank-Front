@@ -21,11 +21,11 @@
 
 .main-nav a {
 	font-weight: bold;
-	color: #2c3e50;
+	color: $secondary-text;
 }
 
 .main-nav a.router-link-exact-active {
-	color: #42b983;
+	color: $active-text;
 }
 
 .main-nav-item {
@@ -35,8 +35,8 @@
 }
 
 .main-nav-item:hover {
-	color: #00bc77;
-	text-decoration: underline;
+	color: $primary-dark;
+	text-decoration: underline $primary-dark;
 }
 
 .main-nav-logo {
@@ -51,4 +51,17 @@
 
 .flex-row {
 	display: flex;
+}
+
+//footer****************
+.footer {
+	display: flex;
+	justify-content: center;
+	border-top: 2px solid $secondary-border;
+	padding: 2rem 0 1.5rem;
+}
+
+.footer-text {
+	margin: 0;
+	padding: 0;
 }

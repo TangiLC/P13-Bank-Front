@@ -11,12 +11,18 @@ import { FaUserCircle, FaEye, FaEyeSlash } from "react-icons/fa";
 import "../../styles/style.css";
 
 function SignInForm() {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const language = useSelector(selectLanguage);
 	const [invalid, setInvalid] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [isVisible, setIsVisible] = useState(false);
 
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+	const toggleVisible = () => {
+		setIsVisible(!isVisible);
+	};
 
 	const localStorageCheck =
 		localStorage.getItem("AB-check") === "true" || false;
@@ -25,19 +31,10 @@ function SignInForm() {
 
 	useEffect(() => {
 		if (storedToken !== null) {
-			console.log("using localStorage");
 			dispatch(fetchUser(storedToken));
 			navigate("/User");
 		}
 	}, [dispatch, navigate, storedToken]);
-
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [isVisible, setIsVisible] = useState(false);
-
-	const toggleVisible = () => {
-		setIsVisible(!isVisible);
-	};
 
 	const Login = async (e) => {
 		e.preventDefault();

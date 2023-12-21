@@ -1,3 +1,5 @@
+@import "./colors";
+
 .header {
 	display: flex;
 	flex-direction: column;
@@ -5,7 +7,7 @@
 }
 
 .formChange {
-	width: 35%;
+	width: 40%;
 }
 
 .divButtonChange,
@@ -15,21 +17,22 @@
 }
 
 .inputChange {
-	height: 30px;
+	font-size: 1rem;
 	width: 40%;
 	margin: 5px;
-	padding-left: 15px;
-	border: 2px solid;
+	padding: 6px 6px 6px 15px;
 	border-radius: 5px;
 }
 
 .change-button {
-	background-color: #00bc77;
-	color: #fff;
+	background-color: $primary-color;
+	color: $primary-text;
 	font-weight: bold;
-	padding: 10px;
-	height: 35px;
+	font-size: 1rem;
+	padding: 8px;
 	width: 30%;
 	margin: 5px;
-	border: 2px solid #00bc77;
+}
+.change-button:hover {
+	background-color: $primary-dark;
 }

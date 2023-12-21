@@ -1,16 +1,17 @@
+@import "./colors";
+
 .account {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border: 1px solid black;
-	background-color: #fff;
+	border: 1px solid $primary-border;
+	background-color: $background-light;
 	width: 80%;
-	margin: 0 auto;
+	margin: 0 auto 2rem auto;
 	flex-direction: column;
 	padding: 1.5rem;
 	box-sizing: border-box;
 	text-align: left;
-	margin-bottom: 2rem;
 }
 
 .account-amount {
@@ -36,15 +37,15 @@
 }
 
 .edit-button {
-	border-color: #00bc77;
-	background-color: #00bc77;
-	color: #fff;
+	border-color: $primary-color;
+	background-color: $primary-color;
+	color: $primary-text;
 	font-weight: bold;
 	padding: 10px;
 }
 
 .header {
-	color: #fff;
+	color: $primary-text;
 	margin-bottom: 2rem;
 }
 
@@ -55,13 +56,13 @@
 	font-size: 1.1rem;
 	font-weight: bold;
 	margin-top: 1rem;
-	border-color: #00bc77;
-	background-color: #00bc77;
-	color: #fff;
+	border-color: $primary-color;
+	background-color: $primary-color;
+	color: $primary-text;
 }
 
 .bg-dark {
-	background-color: #12002b;
+	background-color: $background-dark;
 	min-height: 50dvh;
 }
 

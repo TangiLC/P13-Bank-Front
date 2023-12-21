@@ -1,8 +1,4 @@
-ul {
-	list-style-type: none;
-	padding: 0;
-	display: flex;
-}
+@import "./colors";
 
 .flex-row {
 	display: flex;
@@ -12,9 +8,10 @@ ul {
 	height: 1.7rem;
 	background-image: url("../assets/flags.png");
 	background-size: 3.4rem 3.4rem;
-	font-size: 1.4rem;
-	color: white;
-	text-shadow: 0 0 2px #000000, 0 0 2px #000000;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: $secondary-text;
+	text-shadow: 0 0 2px $secondary-border, 0 0 2px $secondary-border;
 }
 
 .flag.flag-es {
