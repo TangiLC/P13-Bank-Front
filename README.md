@@ -5,72 +5,23 @@ Conversion de l'ancien design HTML en react.
 
 ## Préliminaires
 
-Le back-end se trouve à [https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API] (https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API). Il utilise `Node.js v12` !
-Lire le ReadMe pour mettre en place la bdd (mongo) et l'API.
+Le back-end se trouve à [https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API). Il utilise `Node.js v12` !
+Lire le ReadMe pour mettre en place la bdd (Mongo) et l'API.
 
 ## Scripts
 
-Une fois la bdd connectée et l'API lancé sur le port local 3001 (`npm run dev:server`)
+Une fois la bdd connectée et l'API Back-end lancé sur le port local 3001 (`npm run dev:server`),
 
 ### `npm start`
 
-Lance l'App en mode développement 
+Lance l'App en mode développement
 [http://localhost:3000](http://localhost:3000) pour voir dans le navigateur.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [![Made-with-Javascript](https://img.shields.io/badge/Made%20with-Javascript-green?style&logo=javascript)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
+  [![Made-with-CSS](https://img.shields.io/badge/Made%20with-CSS-pink?style&logo=css3)](https://github.com/topics/css)
+- [![React-v_18.2.0](https://img.shields.io/badge/React-v_18.2.0-blue?style&logo=react)](https://fr.reactjs.org/)
+  [![React-Router-v_6.21.0](https://img.shields.io/badge/React_Router-v_6.21.0-yellow?style&logo=react)](https://reactrouter.com/docs/en/v6)
+- [![Create-React-App_v.5.0.1](https://img.shields.io/badge/Create%20React%20App-v.5.0.1-purple?style&logo=react)](https://github.com/facebook/create-react-app)
+  [![reduxjs/toolkit_v.1.9.7](https://img.shields.io/badge/React_Recharts-v_2.7.3-teal?style&logo=redux)](https://www.npmjs.com/package/@reduxjs/toolkit)
