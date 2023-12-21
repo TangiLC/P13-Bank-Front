@@ -1,15 +1,21 @@
-# Getting Started with Create React App
+# Utilisez une API pour un compte utilisateur bancaire avec React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Connection à la base de données avec un Token jws généré par l'API Back-end
+Conversion de l'ancien design HTML en react.
 
-## Available Scripts
+## Préliminaires
 
-In the project directory, you can run:
+Le back-end se trouve à [https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API] (https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API). Il utilise `Node.js v12` !
+Lire le ReadMe pour mettre en place la bdd (mongo) et l'API.
+
+## Scripts
+
+Une fois la bdd connectée et l'API lancé sur le port local 3001 (`npm run dev:server`)
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Lance l'App en mode développement 
+[http://localhost:3000](http://localhost:3000) pour voir dans le navigateur.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.

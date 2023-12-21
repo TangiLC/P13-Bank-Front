@@ -59,6 +59,13 @@
 	justify-content: center;
 	border-top: 2px solid $secondary-border;
 	padding: 2rem 0 1.5rem;
+
+	position: fixed;
+	bottom: 0%;
+	height: 2dvh;
+	left: 0;
+	width: 100%;
+	background-color: $background-light;
 }
 
 .footer-text {
