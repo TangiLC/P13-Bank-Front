@@ -47,21 +47,22 @@ Pour lancer l'App en mode développement, sur le port local 3000 par défaut :
 
 - _L'utilisateur peut se connecter au système_&nbsp;
 
-  La page `/sign-in` est accessible, le formulaire de connection attend la saisie utilisateur&nbsp;
-  La validation de la saisie entraîne la vérification du couple email/mdp par l'API&nbsp;
-  Après vérification positive, envoi d'un token jws et navigation vers `/user`&nbsp;
-  Si l'utilisateur choisi de conserver l'authentification, le token est sauvegardé en localStorage&nbsp;
+  La page `/sign-in` est accessible, le formulaire de connection attend la saisie utilisateur&nbsp;&nbsp;
+  La validation de la saisie entraîne la vérification du couple email/mdp par l'API&nbsp;&nbsp;
+  Après vérification positive, envoi d'un token jws et navigation vers `/user`&nbsp;&nbsp;
+  Si l'utilisateur choisi de conserver l'authentification, le token est sauvegardé en localStorage&nbsp;&nbsp;
   Après vérification négative, retour sur root `/`&nbsp;
 
 - _L'utilisateur peut se déconnecter du système_&nbsp;
 
-  Le header affiche un bouton de déconnexion&nbsp;
-  Un clic sur le bouton renvoie sur la page root `/`&nbsp;
-  Le token stocké en localStorage ou SessionStorage est remis à zéro&nbsp;
+  Le header affiche un bouton de déconnexion&nbsp;&nbsp;
+  Un clic sur le bouton renvoie sur la page root `/`&nbsp;&nbsp;
+  Le token stocké en localStorage ou SessionStorage est remis à zéro&nbsp;&nbsp;
 
 - _L'utilisateur peut modifier le profil et conserver les données dans la base de données._&nbsp;
 
   Le endpoint /user/profile PUT avec une authentification par token permet à l'API de modifier la bdd&nbsp;
 
 - _Utilisation de Redux pour la gestion du store_&nbsp;
+
   Redux et Redux-toolkit prennent en charge le store, avec actions et reducers&nbsp;
