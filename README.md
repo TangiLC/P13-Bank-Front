@@ -4,10 +4,14 @@ Création d'une application web React pour un système d'authentification utilis
 
 Conversion de l'ancien design HTML en react.
 
-## Préliminaires
+## Prérequis
+
+- [![npm-v_7.24.1](https://img.shields.io/badge/npm-v_7.24.1-orange?style&logo=npm)](https://docs.npmjs.com/)
+  [![NodeJs-v_20.9.0](https://img.shields.io/badge/NodeJs-v_20.9.0-red?style&logo=nodedotjs)](https://nodejs.org/en/docs/)
+  [![VSCode-v_1.85.1](https://img.shields.io/badge/VSCode-v_1.85.1-black?style&logo=visual-studio-code)](https://code.visualstudio.com/download)
 
 Le back-end se trouve à [https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API). Il utilise `Node.js v12` !
-Lire le ReadMe pour mettre en place la bdd (Mongo) et l'API.
+Suivre le ReadMe pour mettre en place la bdd (Mongo) et l'API.
 
 ## Scripts
 
@@ -15,27 +19,23 @@ Une fois la bdd connectée et l'API Back-end lancée sur le port local 3001 (`np
 
 ### `npm start`
 
-Lance l'App en mode développement, ouvrir :
-[http://localhost:3000](http://localhost:3000) pour voir dans le navigateur.
+Pour lancer l'App en mode développement, sur le port local 3000 par défaut :
+[http://localhost:3000](http://localhost:3000) pour accéder dans le navigateur.
 
 ## Technologies
 
 - [![Made-with-Javascript](https://img.shields.io/badge/Made%20with-Javascript-green?style&logo=javascript)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
   [![Made-with-Sass](https://img.shields.io/badge/Made%20with-Sass-pink?style&logo=Sass)](https://github.com/topics/sass)
 - [![React-v_18.2.0](https://img.shields.io/badge/React-v_18.2.0-blue?style&logo=react)](https://fr.reactjs.org/)
-- [![reduxjs/toolkit_v.1.9.7](https://img.shields.io/badge/Redux%20Toolkit-v.1.9.7-teal?style&logo=redux)](https://www.npmjs.com/package/@reduxjs/toolkit)
+  [![reduxjs/toolkit_v.1.9.7](https://img.shields.io/badge/Redux%20Toolkit-v.1.9.7-teal?style&logo=redux)](https://www.npmjs.com/package/@reduxjs/toolkit)
+- [![JWT/RCF_7519](https://img.shields.io/badge/Made%2520with-JWT-orange?style&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
+
 
 ## Resources
 
-- Les fichiers html statiques et css de l'ancien design sont fournis en base.
-![Alt text](index.png)
-![Alt text](sign-in.png)
-![Alt text](user.png)
+- Les fichiers html statiques et le css de l'ancien design sont fournis comme tramme de départ.
+  ![Page initiale](index.png)
+  ![Formulaire de connexion](sign-in.png)
+  ![Page utilisateur connecté](user.png)
 
-
-
-### Prérequis
-
-- [![npm-v_7.24.1](https://img.shields.io/badge/npm-v_7.24.1-orange?style&logo=npm)](https://docs.npmjs.com/)
-  [![NodeJs-v_20.9.0](https://img.shields.io/badge/NodeJs-v_20.9.0-red?style&logo=nodedotjs)](https://nodejs.org/en/docs/)
-  [![VSCode-v_1.85.1](https://img.shields.io/badge/VSCode-v_1.85.1-black?style&logo=visual-studio-code)](https://code.visualstudio.com/download)
+- La technologie JWT de Token encrypé (RCF 7519) est consultable [https://jwt.io/](https://jwt.io/)
