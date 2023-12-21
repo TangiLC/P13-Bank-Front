@@ -20,11 +20,9 @@ Lance l'App en mode développement
 ## Technologies
 
 - [![Made-with-Javascript](https://img.shields.io/badge/Made%20with-Javascript-green?style&logo=javascript)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
-  [![Made-with-CSS](https://img.shields.io/badge/Made%20with-CSS-pink?style&logo=css3)](https://github.com/topics/css)
+  [![Made-with-Sass](https://img.shields.io/badge/Made%20with-Sass-pink?style&logo=Sass)](https://github.com/topics/sass)
 - [![React-v_18.2.0](https://img.shields.io/badge/React-v_18.2.0-blue?style&logo=react)](https://fr.reactjs.org/)
-  [![React-Router-v_6.21.0](https://img.shields.io/badge/React_Router-v_6.21.0-yellow?style&logo=react)](https://reactrouter.com/docs/en/v6)
-- [![Create-React-App_v.5.0.1](https://img.shields.io/badge/Create%20React%20App-v.5.0.1-purple?style&logo=react)](https://github.com/facebook/create-react-app)
-  [![reduxjs/toolkit_v.1.9.7](https://img.shields.io/badge/React_Recharts-v_2.7.3-teal?style&logo=redux)](https://www.npmjs.com/package/@reduxjs/toolkit)
+- [![reduxjs/toolkit_v.1.9.7](https://img.shields.io/badge/Redux%20Toolkit-v.1.9.7-teal?style&logo=redux)](https://www.npmjs.com/package/@reduxjs/toolkit)
 
 ## Resources
 
