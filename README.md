@@ -48,9 +48,13 @@ Pour lancer l'App en mode développement, sur le port local 3000 par défaut :
 - _L'utilisateur peut se connecter au système_&nbsp;
 
   La page `/sign-in` est accessible, le formulaire de connection attend la saisie utilisateur&nbsp;&nbsp;
+
   La validation de la saisie entraîne la vérification du couple email/mdp par l'API&nbsp;&nbsp;
+
   Après vérification positive, envoi d'un token jws et navigation vers `/user`&nbsp;&nbsp;
+
   Si l'utilisateur choisi de conserver l'authentification, le token est sauvegardé en localStorage&nbsp;&nbsp;
+
   Après vérification négative, retour sur root `/`&nbsp;
 
 - _L'utilisateur peut se déconnecter du système_&nbsp;
