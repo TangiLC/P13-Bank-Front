@@ -7,7 +7,6 @@ import { setRemember } from "../../features/services/remember";
 import { selectLanguage } from "../../utils/selector";
 import { signInText } from "./signInText";
 import { FaUserCircle, FaEye, FaEyeSlash } from "react-icons/fa";
-import { decrypt } from "../../features/services/crypto";
 
 import "../../styles/style.css";
 
@@ -22,28 +21,18 @@ function SignInForm() {
 	const localStorageCheck =
 		localStorage.getItem("AB-check") === "true" || false;
 	const [isChecked, setIsChecked] = useState(localStorageCheck || false);
-
-	const [decryptedEmail, setDecryptedEmail] = useState("");
-	const [decryptedPassword, setDecryptedPassword] = useState("");
-	const cryptedEmail = localStorage.getItem("AB-email");
-	const cryptedPassword = localStorage.getItem("AB-password");
+	const storedToken = isChecked ? localStorage.getItem("AB-token-info") : null;
 
 	useEffect(() => {
-		if (isChecked) {
-			setDecryptedEmail(decrypt(cryptedEmail));
-			setEmail(decryptedEmail);
+		if (storedToken !== null) {
+			console.log("using localStorage");
+			dispatch(fetchUser(storedToken));
+			navigate("/User");
 		}
-	}, [cryptedEmail, decryptedEmail, isChecked]);
+	}, [dispatch, navigate, storedToken]);
 
-	useEffect(() => {
-		if (isChecked) {
-			setDecryptedPassword(decrypt(cryptedPassword));
-			setPassword(decryptedPassword);
-		}
-	}, [cryptedPassword, decryptedPassword, isChecked]);
-
-	const [email, setEmail] = useState(decryptedEmail || "");
-	const [password, setPassword] = useState(decryptedPassword || "");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 	const [isVisible, setIsVisible] = useState(false);
 
 	const toggleVisible = () => {
