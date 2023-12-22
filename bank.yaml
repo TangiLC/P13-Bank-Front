@@ -197,7 +197,7 @@ paths:
           required: false
         - type: string
           in: path
-          name: AccountId
+          name: accountId
           description: account ID
           required: true
       responses:
@@ -214,7 +214,7 @@ paths:
         "503":
           description: Server unavailable (down/maintenance).
 
-  /user/{accountId}/transactions/{startDate,endDate}:
+  /user/{accountId}/transactions/{startDate},{endDate}:
     post:
       security:
         - Bearer: []
@@ -230,7 +230,7 @@ paths:
           required: true
         - type: string
           in: path
-          name: AccountId
+          name: accountId
           description: account ID
           required: true
         - type: integer
@@ -259,6 +259,8 @@ paths:
 
   /user/{accountId}/transaction/{transactionId}:
     post:
+      security:
+      - Bearer: []
       tags:
         - User Transactions
       summary: Fetch a detailed transaction
@@ -274,6 +276,11 @@ paths:
           name: transactionId
           description: User transaction Id
           required: true
+        - type: string
+          in: path
+          name: accountId
+          description: User account Id
+          required: true
       responses:
         "200":
           description: Detailed transaction retrieved successfully
@@ -283,7 +290,10 @@ paths:
           description: Bad request.
         "500":
           description: Internal Server Error
+  /user/{accountId}/transaction/{transactionId}/edit/{editType},{editContent}:
     put:
+      security:
+      - Bearer: []
       tags:
         - User Transactions
       summary: Edit a detailed transaction
@@ -296,10 +306,15 @@ paths:
           required: true
         - type: string
           in: path
+          name: accountId
+          description: User account Id
+          required: true
+        - type: string
+          in: path
           name: transactionId
           description: User transaction Id
           required: true
-        - type: number
+        - type: integer
           in: path
           name: editType
           description: transaction type (type/category/note) to edit
@@ -312,7 +327,7 @@ paths:
 
       responses:
         "200":
-          description: Detailed transaction retrieved successully
+          description: Detailed transaction edited successfully
           schema:
             $ref: "#/definitions/Transactions"
         "400":
@@ -320,10 +335,12 @@ paths:
         "500":
           description: Internal Server Error
     delete:
+      security:
+      - Bearer: []
       tags:
         - User Transactions
-      summary: Fetch a detailed transaction
-      description: API for getting one detailed transaction
+      summary: Delete comment/Note in a detailed transaction
+      description: Delete one item in detailed transaction
       parameters:
         - type: string
           in: header
@@ -332,12 +349,23 @@ paths:
           required: true
         - type: string
           in: path
+          name: accountId
+          description: User account Id
+          required: true
+        - type: string
+          in: path
           name: transactionId
           description: User transaction Id
           required: true
+        - type: integer
+          in: path
+          name: editType
+          description: transaction type (category/note) to delete
+          required: true
+        
       responses:
         "200":
-          description: Detailed transaction retrieved successully
+          description: Detailed transaction deleted successfully
           schema:
             $ref: "#/definitions/Transactions"
         "400":
