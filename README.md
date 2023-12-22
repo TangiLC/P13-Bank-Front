@@ -60,7 +60,9 @@ Pour lancer l'App en mode développement, sur le port local 3000 par défaut :
 - _L'utilisateur peut se déconnecter du système_&nbsp;
 
   Le header affiche un bouton de déconnexion&nbsp;&nbsp;
+
   Un clic sur le bouton renvoie sur la page root `/`&nbsp;&nbsp;
+  
   Le token stocké en localStorage ou SessionStorage est remis à zéro&nbsp;&nbsp;
 
 - _L'utilisateur peut modifier le profil et conserver les données dans la base de données._&nbsp;
