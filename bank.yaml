@@ -143,14 +143,14 @@ paths:
           description: Internal Server Error
 
   # USER TRANSACTIONS
-  /user/{accountId}/balance:
+  /accounts/{accountId}/balance:
     get:
       security:
         - Bearer: []
       tags:
-        - User Transactions
+        - Accounts module
       summary: Current Balance of {accountId}.
-      description: API call for the account balance.
+      description: API call for the account balance. *Balance is integer in ¢ to avoid float*
       parameters:
         - type: string
           in: header
@@ -176,12 +176,12 @@ paths:
         "503":
           description: Server unavailable (down/maintenance).
 
-  /user/{accountId}/transactions:
+  /account/{accountId}/lastTransactions:
     post:
       security:
         - Bearer: []
       tags:
-        - User Transactions
+        - Accounts module
       summary: Lasts N transactions of account.
       description: API call for last N transactions of the account.
       parameters:
@@ -190,15 +190,18 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-        - type: integer
-          in: header
-          name: ArrayLength
-          description: Length of N, if omitted =default is 20
+
+        - in: body
+          name: arrayLength
+          description: Length of N, *if omitted =default is 20*
           required: false
+          schema:
+            $ref: "#/definitions/arrayLength"
+
         - type: string
           in: path
           name: accountId
-          description: account ID
+          description: account Id
           required: true
       responses:
         "200":
@@ -214,12 +217,12 @@ paths:
         "503":
           description: Server unavailable (down/maintenance).
 
-  /user/{accountId}/transactions/{startDate},{endDate}:
+  /account/{accountId}/getTransactions:
     post:
       security:
         - Bearer: []
       tags:
-        - User Transactions
+        - Accounts module
       summary: Transactions of account between dates.
       description: API call for transactions of the account between start and end dates.
       parameters:
@@ -233,16 +236,13 @@ paths:
           name: accountId
           description: account ID
           required: true
-        - type: integer
-          in: path
-          name: startDate
-          description: start date
-          required: true
-        - type: integer
-          in: path
-          name: endDate
-          description: end date
-          required: true
+        - in: body
+          name: dates
+          description: start date, end date.
+          required: false
+          schema:
+            $ref: "#/definitions/dates"
+
       responses:
         "200":
           description: Transactions retrieved successfully
@@ -257,12 +257,12 @@ paths:
         "503":
           description: Server unavailable (down/maintenance).
 
-  /user/{accountId}/transaction/{transactionId}:
+  /account/{accountId}/transaction/{transactionId}:
     post:
       security:
-      - Bearer: []
+        - Bearer: []
       tags:
-        - User Transactions
+        - Transactions module
       summary: Fetch a detailed transaction
       description: API call for one detailed transaction {transactionId}
       parameters:
@@ -273,13 +273,13 @@ paths:
           required: true
         - type: string
           in: path
-          name: transactionId
-          description: User transaction Id
+          name: accountId
+          description: User account Id
           required: true
         - type: string
           in: path
-          name: accountId
-          description: User account Id
+          name: transactionId
+          description: User transaction Id
           required: true
       responses:
         "200":
@@ -290,12 +290,12 @@ paths:
           description: Bad request.
         "500":
           description: Internal Server Error
-  /user/{accountId}/transaction/{transactionId}/edit/{editType},{editContent}:
+  /account/{accountId}/transaction/{transactionId}/edit:
     put:
       security:
-      - Bearer: []
+        - Bearer: []
       tags:
-        - User Transactions
+        - Transactions module
       summary: Edit a detailed transaction
       description: Edit one item in detailed transaction
       parameters:
@@ -314,58 +314,16 @@ paths:
           name: transactionId
           description: User transaction Id
           required: true
-        - type: integer
-          in: path
-          name: editType
-          description: transaction type (type/category/note) to edit
+        - in: body
+          name: editBody
+          description: edit type (0:category, 1:note) and content (*can be "empty" to delete previous content*).
           required: true
-        - type: string
-          in: path
-          name: editContent
-          description: transaction content to edit
-          required: true
+          schema:
+            $ref: "#/definitions/editBody"
 
       responses:
         "200":
           description: Detailed transaction edited successfully
-          schema:
-            $ref: "#/definitions/Transactions"
-        "400":
-          description: Bad request.
-        "500":
-          description: Internal Server Error
-    delete:
-      security:
-      - Bearer: []
-      tags:
-        - User Transactions
-      summary: Delete comment/Note in a detailed transaction
-      description: Delete one item in detailed transaction
-      parameters:
-        - type: string
-          in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-        - type: string
-          in: path
-          name: accountId
-          description: User account Id
-          required: true
-        - type: string
-          in: path
-          name: transactionId
-          description: User transaction Id
-          required: true
-        - type: integer
-          in: path
-          name: editType
-          description: transaction type (category/note) to delete
-          required: true
-        
-      responses:
-        "200":
-          description: Detailed transaction deleted successfully
           schema:
             $ref: "#/definitions/Transactions"
         "400":
@@ -383,9 +341,11 @@ definitions:
     properties:
       email:
         type: string
+        format: email
         description: user email
       password:
         type: string
+        format: password
         description: user password
       firstName:
         type: string
@@ -397,9 +357,11 @@ definitions:
     properties:
       email:
         type: string
+        format: email
         description: user email
       password:
         type: string
+        format: password
         description: user password
   ApiResponse:
     type: object
@@ -415,6 +377,7 @@ definitions:
             type: string
           email:
             type: string
+            format: email
   LoginResponse:
     type: object
     properties:
@@ -431,8 +394,7 @@ definitions:
     type: object
     properties:
       balance:
-        type: number
-        format: float
+        type: integer
       available:
         type: boolean
   Accounts:
@@ -442,6 +404,28 @@ definitions:
         type: integer
       accountId:
         type: string
+  arrayLength:
+    type: object
+    properties:
+      arrayLength:
+        type: integer
+        default: 20
+  dates:
+    type: object
+    properties:
+      startDate:
+        type: string
+        format: date
+      endDate:
+        type: string
+        format: date
+  editBody:
+    type: object
+    properties:
+      editType:
+        type: integer
+      editContent:
+        type: string
   Transactions:
     type: object
     properties:
@@ -449,13 +433,14 @@ definitions:
         type: integer
       date:
         type: string
+        format: date
       description:
         type: string
       amount:
-        type: number
+        type: integer
       type:
-        type: string
+        type: integer
       category:
-        type: string
+        type: integer
       notes:
         type: string
