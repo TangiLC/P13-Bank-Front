@@ -171,12 +171,14 @@ paths:
           description: Bad request.
         "401":
           description: Token not matching.
+        "404":
+          description: Account not found in database
         "500":
           description: Internal Server Error.
         "503":
           description: Server unavailable (down/maintenance).
 
-  /account/{accountId}/lastTransactions:
+  /account/{accountId}/lastsTransactions:
     post:
       security:
         - Bearer: []
@@ -212,6 +214,8 @@ paths:
           description: Bad request.
         "401":
           description: Token not matching.
+        "404":
+          description: Account not found in database
         "500":
           description: Internal Server Error.
         "503":
@@ -252,12 +256,14 @@ paths:
           description: Bad request.
         "401":
           description: Token not matching.
+        "404":
+          description: Account not found in database
         "500":
           description: Internal Server Error.
         "503":
           description: Server unavailable (down/maintenance).
 
-  /account/{accountId}/transaction/{transactionId}:
+  /transaction/{transactionId}:
     post:
       security:
         - Bearer: []
@@ -273,11 +279,6 @@ paths:
           required: true
         - type: string
           in: path
-          name: accountId
-          description: User account Id
-          required: true
-        - type: string
-          in: path
           name: transactionId
           description: User transaction Id
           required: true
@@ -288,9 +289,11 @@ paths:
             $ref: "#/definitions/Transactions"
         "400":
           description: Bad request.
+        "404":
+          description: Transaction not found in database
         "500":
           description: Internal Server Error
-  /account/{accountId}/transaction/{transactionId}/edit:
+  /transaction/{transactionId}/edit:
     put:
       security:
         - Bearer: []
@@ -303,11 +306,6 @@ paths:
           in: header
           name: Authorization
           description: Attach Bearer JWT token
-          required: true
-        - type: string
-          in: path
-          name: accountId
-          description: User account Id
           required: true
         - type: string
           in: path
@@ -328,6 +326,8 @@ paths:
             $ref: "#/definitions/Transactions"
         "400":
           description: Bad request.
+        "404":
+          description: Transaction not found in database
         "500":
           description: Internal Server Error
 
