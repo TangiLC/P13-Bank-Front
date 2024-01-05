@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	statusData: "void",
+	statusData: "idle", // 'idle', 'pending', 'updating', 'resolved', 'rejected'
 	data: null,
 	error: null,
 	token: null,
@@ -16,7 +16,7 @@ const { actions, reducer } = createSlice({
 				payload: { token },
 			}),
 			reducer: (draft, action) => {
-				if (draft.statusData === "void") {
+				if (draft.statusData === "idle") {
 					draft.statusData = "pending";
 					return;
 				}

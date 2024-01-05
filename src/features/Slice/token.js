@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // Le state initial
 const initialState = {
 
-    statusToken:'void',
+    statusToken:'idle', // 'idle', 'pending', 'updating', 'resolved', 'rejected'
     data: null,
     error: null,
     token:null,
@@ -18,7 +18,7 @@ const {actions, reducer} = createSlice({
                 payload: {userLogin},
             }),
             reducer: (draft, action ) => {
-                if (draft.statusToken === 'void') {
+                if (draft.statusToken === 'idle') {
                     draft.statusToken = 'pending'
                     return
                 }
@@ -53,7 +53,7 @@ const {actions, reducer} = createSlice({
                 payload: {userLogin, error},
             }),
             reducer: (draft, action ) => {
-                if (draft.statusToken === 'pending' || draft.statusToken === 'uptading') {
+                if (draft.statusToken === 'pending' || draft.statusToken === 'updating') {
                     draft.error = action.payload
                     draft.data = null 
                     draft.statusToken= 'rejected'

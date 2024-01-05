@@ -3,7 +3,7 @@ import { selectLanguage } from "../../utils/selector";
 import { hero } from "./hero";
 import "../../styles/style.css";
 
-function Homebanner() {
+function HomeBanner() {
 	const language = useSelector(selectLanguage);
 	return (
 		<div className="hero">
@@ -18,4 +18,4 @@ function Homebanner() {
 	);
 }
 
-export default Homebanner;
+export default HomeBanner;
