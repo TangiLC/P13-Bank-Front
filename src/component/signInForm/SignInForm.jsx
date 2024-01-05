@@ -51,12 +51,13 @@ function SignInForm() {
 		dispatch(fetchUser(token));
 		// eslint-disable-next-line no-unused-expressions
 		isChecked
-			? setRemember({
+			? (localStorage.setItem("AB-token-info", token),
+			  setRemember({
 					email: email,
 					password: password,
 					isChecked: isChecked,
 					token: token,
-			  })
+			  }))
 			: (sessionStorage.setItem("AB-token-info", token),
 			  setRemember({
 					email: null,
