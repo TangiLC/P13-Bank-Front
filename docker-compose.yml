@@ -1,0 +1,12 @@
+## Fichier : docker-compose.yml
+version: '3'
+services:
+  react-docker:
+    container_name: react-docker
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    # stdin_open: true
+    volumes:
+       - .:/app

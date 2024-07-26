@@ -1,7 +1,7 @@
 export const mockData = {
 	user: {
 		firstName: "Test",
-		lastName: "Mock",
+		lastName: "No DataBase",
 		email: "test@test.com",
 	},
 	token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
