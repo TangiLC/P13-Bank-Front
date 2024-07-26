@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { selectLanguage } from "../../utils/selector";
 import { hero } from "./hero";
 
-function HomeBanner() {
+function Banner() {
 	const language = useSelector(selectLanguage);
 	return (
 		<div className="hero">
@@ -17,4 +17,4 @@ function HomeBanner() {
 	);
 }
 
-export default HomeBanner;
+export default Banner;

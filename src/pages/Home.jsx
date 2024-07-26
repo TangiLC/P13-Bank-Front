@@ -1,11 +1,11 @@
-import HomeBanner from "../component/home/HomeBanner";
+import Banner from "../component/home/Banner.jsx";
 import HomeContent from "../component/home/HomeContent";
 import "../styles/style.css";
 
 function Home() {
 	return (
 		<main>
-			<HomeBanner />
+			<Banner />
 			<HomeContent />
 		</main>
 	);
