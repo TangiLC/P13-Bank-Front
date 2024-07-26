@@ -1,12 +1,12 @@
-import Banner from "../component/home/Banner.jsx";
-import HomeContent from "../component/home/HomeContent";
+import HBanner from "../component/home/HBanner";
+import HContent from "../component/home/HContent";
 import "../styles/style.css";
 
 function Home() {
 	return (
 		<main>
-			<Banner />
-			<HomeContent />
+			<HBanner />
+			<HContent />
 		</main>
 	);
 }

@@ -3,7 +3,7 @@ import { selectLanguage } from "../../utils/selector";
 import { features } from "./features";
 import "../../styles/style.css";
 
-function HomeContent() {
+function HContent() {
 	const language = useSelector(selectLanguage);
 
 	return (
@@ -24,6 +24,4 @@ function HomeContent() {
 		</section>
 	);
 }
-export default HomeContent;
-
-
+export default HContent;
